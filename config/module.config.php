@@ -21,6 +21,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'CdiCrm\Controller\Index' => 'CdiCrm\Controller\IndexController',
+            'CdiCrm\Controller\Qc' => 'CdiCrm\Controller\QcController',
         ),
     ),
     'view_manager' => array(
@@ -31,17 +32,51 @@ return array(
     'router' => array(
         'routes' => array(
             'cdicrm' => array(
-                'type' => 'segment',
+                'type' => 'Literal',
                 'options' => array(
-                    'route' => '/cdicrm/:controller[/:action][/:id]',
-                    'constraints' => array(
-                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]+',
-                    ),
+                    'route' => '/cdicrm',
                     'defaults' => array(
-                        'controller' => 'CdiCrm\Controller\Index',
-                        'action' => 'hello',
+                        '__NAMESPACE__' => 'CdiCrm\Controller',
+                        'controller' => 'Index',
+                        'action' => 'index',
+                    ),
+                ),
+                'child_routes' => array(
+                    'default' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/:controller[/:action]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                    'qc' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/qc',
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'CdiCrm\Controller',
+                                'controller' => 'CdiCrm\Controller\Qc',
+                                'action' => 'list',
+                            ),
+                        ),
+                        'child_routes' => array(
+                            'list' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/list',
+                                    'defaults' => array(
+                                        '__NAMESPACE__' => 'CdiCrm\Controller',
+                                        'controller' => 'CdiCrm\Controller\Qc',
+                                        'action' => 'list',
+                                    ),
+                                ),
+                            ),
+                        ),
                     ),
                 ),
             ),
