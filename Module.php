@@ -1,6 +1,6 @@
 <?php
 
-namespace CdiTicket;
+namespace CdiCrm;
 
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;

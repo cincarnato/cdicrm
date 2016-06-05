@@ -1,10 +1,10 @@
 {
-    "name":        "cdi/cditicket",
-    "description": "Zend Framework 2 Module that provides a ticket module",
+    "name":        "cdi/cdicrm",
+    "description": "Zend Framework 2 Module that provides a crm module",
     "type":        "library",
     "license":     "WTFPL",
     "keywords": [
-        "ticket",
+        "crm",
         "doctrine",
         "zf2",
         "module",
@@ -37,7 +37,7 @@
     
     "autoload": {
         "psr-0": {
-            "CdiTicket\\": "src/"
+            "CdiCrm\\": "src/"
         },
          "classmap": [
             "./Module.php"
