@@ -28,7 +28,8 @@
     "require-dev": {
         "zendframework/zendframework": "~2.2",
         "doctrine/doctrine-orm-module": ">=0.9",
-         "cdi/cdidatagrid": ">=v1.0"
+         "cdi/cdidatagrid": ">=v1.0",
+         "cdi/cdientity": ">=1.0"
     },
     
     "suggest" : {
